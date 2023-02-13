@@ -1,20 +1,20 @@
 from django.shortcuts import render
 from .models import Post
 
-def blog(request):
-    return render(request,'blog.html')
+# def blog(request):
+#     return render(request,'blog.html')
 
 def blog_index(request):
-    blog = Post.objects.all()
+    Posts = Post.objects.all().order_by('-id')  #  в переменную посты выгружаются все объекты БД Пост
     context = {
-        'blog': blog
+        'Posts': Posts    # словарь в который загружаются все посты
     }
     return render(request, 'blog_index.html', context)
 
 
 def blog_detail(request, pk):
-    blog = Post.objects.get(pk=pk)
+    post = Post.objects.get(pk=pk)
     context = {
-        'blog': blog
+        'post': post
     }
     return render(request, 'blog_detail.html', context)

@@ -3,14 +3,14 @@
 {% block page_content %}
 <h1>Мой Блог</h1>
 <div class="row">
-{% for blog in blog %}
+{% for Post in Posts %}
     <div class="col-md-4">
       <div class="card md-2">
 
         <div class="card-body">
           <h5 class="card-title">{{ Post.title }}</h5>
-          <p class="card-text">{{ Post.description }}</p>
-          <a href="{% url 'blog_detail' blog.pk %}"
+          <p class="card-text">{{ Post.body }}</p>
+          <a href="{% url 'blog_detail' Post.pk %}"
             class="btn btn-primary">
             Подробнее
           </a>
